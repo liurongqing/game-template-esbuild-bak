@@ -1,0 +1,19 @@
+{
+  "name": "henmao-game-template-esbuild",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node scripts/dev.js",
+    "build": "node scripts/prod.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.11.20"
+  },
+  "dependencies": {
+    "phaser": "^3.54.0"
+  }
+}
