@@ -14,17 +14,11 @@ export class HomeScene extends Phaser.Scene {
 
     Align.scaleTo(logo, 0.2);
 
-
-
     const agrid = new Grid({
       scene: this,
       debug: true,
     });
 
     agrid.atIndex(logo, 7);
-
-    // console.log(agrid)
-
-    // agrid.atIndex(logo, 7);
   }
 }
