@@ -1,19 +1,17 @@
-import { Game } from '@phaserjs/phaser/Game';
-import {
-  BackgroundColor,
-  Parent,
-  Scenes,
-  Size,
-  WebGL,
-} from '@phaserjs/phaser/config';
+import 'phaser';
 
-import scenes from './scenes';
+import scene from './scenes';
 
-new Game(
-  WebGL(),
-  Parent('game'),
-  Size(window.innerWidth, window.innerHeight),
-  BackgroundColor(0xeeeeee),
-  // BackgroundColor(0x000000),
-  Scenes(scenes)
-);
+const config: Phaser.Types.Core.GameConfig = {
+  type: Phaser.AUTO,
+  scale: {
+    mode: Phaser.Scale.NONE,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    parent: 'root',
+    width: window.innerWidth,
+    height: window.innerHeight,
+  },
+  scene,
+};
+
+export default new Phaser.Game(config);

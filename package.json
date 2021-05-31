@@ -11,9 +11,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "^0.11.20"
+    "esbuild": "^0.12.5"
   },
   "dependencies": {
-    "@phaserjs/phaser": "^0.1.18"
+    "phaser": "^3.55.2"
   }
 }
