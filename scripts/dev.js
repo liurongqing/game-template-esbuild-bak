@@ -18,7 +18,7 @@ esbuild
     }
   )
   .then((server) => {
-    console.log('stop..')
+    console.log('stop..');
     // server.stop();
   });
 
