@@ -13,6 +13,7 @@ new Game(
   WebGL(),
   Parent('game'),
   Size(window.innerWidth, window.innerHeight),
-  BackgroundColor(0x000000),
+  BackgroundColor(0xeeeeee),
+  // BackgroundColor(0x000000),
   Scenes(scenes)
 );

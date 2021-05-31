@@ -17,7 +17,7 @@ export class HomeScene extends Scene {
 
   async preload() {
     const loader = new Loader();
-    loader.add(ImageFile('logo', 'assets/logo.png'));
+    loader.add(ImageFile('bg', 'assets/bg.jpg'));
 
     await loader.start();
 
@@ -25,19 +25,20 @@ export class HomeScene extends Scene {
   }
 
   create() {
-    const logo = new Sprite(100, 200, 'logo').setRotation(0.3);
-    const world = new StaticWorld(this);
+    const logo = new Sprite(100, 200, 'bg');
+    // const world = new StaticWorld(this);
 
-    Align.scaleTo(logo, 0.1);
+    // Align.scaleTo(logo, 0.2);
 
-    const agrid = new Grid({
+    const grid = new Grid({
       scene: this,
-      rows: 11,
-      cols: 11
+      debug: true
     });
+
+    // grid.atIndex(logo, 5);
 
     // AddTween(logo).to(3000, { y: 400, rotation: 0 }).easing(Easing.Bounce.Out);
 
-    AddChildren(world, logo);
+    // AddChildren(world, logo);
   }
 }
