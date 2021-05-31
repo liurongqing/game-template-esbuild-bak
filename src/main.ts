@@ -7,11 +7,11 @@ const config: Phaser.Types.Core.GameConfig = {
   scale: {
     mode: Phaser.Scale.NONE,
     autoCenter: Phaser.Scale.CENTER_BOTH,
-    parent: 'root',
+    parent: 'game',
     width: window.innerWidth,
     height: window.innerHeight,
   },
   scene,
 };
 
-export default new Phaser.Game(config);
+globalThis.game = new Phaser.Game(config);

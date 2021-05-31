@@ -1,14 +1,30 @@
+import { Align, Grid } from '../../utils';
+
 export class HomeScene extends Phaser.Scene {
   constructor() {
     super('HomeScene');
   }
 
   preload() {
-    this.load.image('bg', 'assets/bg.jpg');
+    this.load.image('logo', 'assets/logo.png');
   }
 
   create() {
-    console.log('2...');
-    this.add.image(100, 100, 'bg');
+    const logo = this.add.image(100, 100, 'logo');
+
+    Align.scaleTo(logo, 0.2);
+
+
+
+    const agrid = new Grid({
+      scene: this,
+      debug: true,
+    });
+
+    agrid.atIndex(logo, 7);
+
+    // console.log(agrid)
+
+    // agrid.atIndex(logo, 7);
   }
 }

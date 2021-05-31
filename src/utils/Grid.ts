@@ -1,9 +1,6 @@
-import { GetWidth, GetHeight } from '@phaserjs/phaser/config/size';
-import { Text, SetFillStyle } from '@phaserjs/phaser/gameobjects/text';
-import { StaticWorld } from '@phaserjs/phaser/world/StaticWorld';
-import { AddChildren } from '@phaserjs/phaser/display';
-
 export class Grid {
+  width: number;
+  height: number;
   cw: number;
   ch: number;
   rows: number;
@@ -20,14 +17,15 @@ export class Grid {
     debug = false,
   }) {
     if (!scene) console.log('missing scene');
-    const width = GetWidth();
-    const height = GetHeight();
+    const { width, height } = scene.game.config;
 
     this.scene = scene;
     this.rows = rows;
     this.cols = cols;
     this.origin = origin;
     this.debug = debug;
+    this.width = width;
+    this.height = height;
     this.cw = width / cols;
     this.ch = height / rows;
 
@@ -49,19 +47,36 @@ export class Grid {
   }
 
   draw() {
-    const world = new StaticWorld(this.scene);
+    this.drawLine();
+    this.drawText();
+  }
+
+  drawLine() {
+    const graphics = this.scene.add.graphics();
+    graphics.lineStyle(1, 0xff0000);
+
+    for (let i = 0; i < this.width; i += this.cw) {
+      graphics.moveTo(i, 0);
+      graphics.lineTo(i, this.height);
+    }
+
+    for (let j = 0; j < this.height; j += this.ch) {
+      graphics.moveTo(0, j);
+      graphics.lineTo(this.width, j);
+    }
+
+    graphics.strokePath();
+  }
+
+  drawText() {
     let count = 0;
-    const texts = [];
     for (let row = 0; row < this.rows; row++) {
       for (let col = 0; col < this.cols; col++) {
-        const text = new Text(0, 0, String(count + 'x1'));
-        text.setOrigin(0.5, 0.5);
-        SetFillStyle('#ff0000', text);
+        const text = this.scene.add.text(0, 0, count, { color: '#ff0000' });
+        // text.setOrigin(0.5, 0.5);
         this.atIndex(text, count);
-        texts.push(text);
         count++;
       }
     }
-    AddChildren(world, ...texts);
   }
 }
