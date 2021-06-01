@@ -7,8 +7,5 @@ esbuild.buildSync({
   bundle: true,
   format: 'iife',
   minify: true,
-  // external: [],
-  // outfile: "out.js",
-  // inject: [""],
   outdir: 'public/js',
 });
